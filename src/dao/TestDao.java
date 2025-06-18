@@ -12,7 +12,7 @@ import bean.School;
 import bean.Test;
 
 public class TestDao extends Dao {
-    
+
     public List<Test> filter(Subject subject, School school) throws Exception {
         List<Test> list = new ArrayList<>();
         Connection connection = getConnection();
