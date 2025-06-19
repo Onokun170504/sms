@@ -17,7 +17,7 @@ public class Dao {
 	 * @return データベースへのコネクション:Connection
 	 * @throws Exception
 	 */
-	public Connection getConnection() throws Exception {
+	public static Connection getConnection() throws Exception {
 		// データソースがnullの場合
 		if (ds == null) {
 			// InitialContextを初期化

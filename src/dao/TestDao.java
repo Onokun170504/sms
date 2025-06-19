@@ -17,6 +17,7 @@ import bean.Test;
 
 public class TestDao extends Dao {
 
+
 	public List<Test> get(Student student, Subject subject, School school) throws Exception {
 	    List<Test> list = new ArrayList<>();
 	    Connection connection = getConnection();
@@ -67,6 +68,9 @@ public class TestDao extends Dao {
 
 
     public List<Test> filter(School school, int classNum, Subject subject, int num) throws Exception {
+
+    public List<Test> filter(Subject subject, School school) throws Exception {
+	branch 'master' of https://github.com/Onokun170504/sms.git
         List<Test> list = new ArrayList<>();
         Connection connection = getConnection();
 
