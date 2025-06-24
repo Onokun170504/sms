@@ -13,12 +13,12 @@ import java.util.List;
 
 import bean.School;
 
-public class Subject extends Dao {
+public class SubjectDao extends Dao {
 
     //get で科目コード＆学校コードで一件の科目データを取得することができるようにする。
 
-    public Subject get(String cd, School school) throws Exception {
-        Subject subject = null;// 取得した科目データを格納するSubjectオブジェクトを作成
+    public SubjectDao get(String cd, School school) throws Exception {
+        SubjectDao subject = null;// 取得した科目データを格納するSubjectオブジェクトを作成
 
         Connection connection = null;
         PreparedStatement statement = null;
@@ -32,7 +32,7 @@ public class Subject extends Dao {
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {// 結果セットに次の行がある
-                subject = new Subject();
+                subject = new SubjectDao();
                 subject.setCd(resultSet.getString("CD"));
                 subject.setName(resultSet.getString("NAME"));
                 subject.setSchool(SchoolDao.get(resultSet.getString("SCHOOL_CD")));
@@ -90,8 +90,8 @@ public class Subject extends Dao {
 	//-------------------------------------------------------------------------------
 
     //学校Beanを指定
-    public List<Subject> filter(School school) throws Exception {
-        List<Subject> list = new ArrayList<>();//取得した科目データを格納するリス
+    public List<SubjectDao> filter(School school) throws Exception {
+        List<SubjectDao> list = new ArrayList<>();//取得した科目データを格納するリス
 
         Connection connection = null;
         PreparedStatement statement = null;
@@ -105,7 +105,7 @@ public class Subject extends Dao {
             resultSet = statement.executeQuery();
 
             while (resultSet.next()) { //全ての該当データを処理
-                Subject subject = new Subject(); // 新しいSubjectオブジェクトを生成
+                SubjectDao subject = new SubjectDao(); // 新しいSubjectオブジェクトを生成
                 subject.setCd(resultSet.getString("CD"));// 科目コードを設定
                 subject.setName(resultSet.getString("NAME"));// 科目名を設定
                 subject.setSchool(SchoolDao.get(resultSet.getString("SCHOOL_CD")));
@@ -142,14 +142,14 @@ public class Subject extends Dao {
   //-------------------------------------------------------------------------------
 
     //Beanには追加と変更したい科目のデータ(学校, 科目コード, 名前)が設定
-    public boolean save(Subject subject) throws Exception {
+    public boolean save(SubjectDao subject) throws Exception {
         Connection connection = null;
         PreparedStatement statement = null;
         int count = 0;
 
         try {
             connection = getConnection(); // データベース接続を取得
-            Subject old = get(subject.getCd(), subject.getSchool());
+            SubjectDao old = get(subject.getCd(), subject.getSchool());
 
             if (old == null) {
                 // 科目が存在しなかった場合、科目を新規作成
@@ -206,14 +206,14 @@ public class Subject extends Dao {
 	//-------------------------------------------------------------------------------
 
 	//科目Beanを指定 渡すBeanにはデータ,学校, 科目コード設定
-    public boolean delete(Subject subject) throws Exception {
+    public boolean delete(SubjectDao subject) throws Exception {
         Connection connection = null;
         PreparedStatement statement = null;
         int count = 0;
 
         try {
             connection = getConnection(); // データベース接続を取得
-            Subject old = get(subject.getCd(), subject.getSchool());
+            SubjectDao old = get(subject.getCd(), subject.getSchool());
 
             if (old != null) {
                 statement = connection.prepareStatement("DELETE FROM SUBJECT WHERE SCHOOL_CD = ? AND CD = ?");
