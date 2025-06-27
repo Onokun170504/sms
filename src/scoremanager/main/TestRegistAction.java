@@ -1,50 +1,40 @@
 package scoremanager.main;
 
-import java.util.List;
+import java.io.IOException;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import bean.Student;
-import bean.Teacher;
-import dao.ClassNumDao;
-import dao.StudentDao;
-import dao.SubjectDao;
-import tool.Action;
+import dao.TestDao;
 
-public class TestRegistAction extends Action {
+public class TestRegistAction extends HttpServlet {
 
-	
-	public void execute1(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		
-	
-        HttpServletRequest request;
-        HttpServletResponse response;
-    ) 
-	}
-    throws Exception {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
-        // フォーム取得
-        TestForm testForm = (TestForm) form;
+        request.setCharacterEncoding("UTF-8");
 
-        // セッションからユーザーデータ取得（仮）
-        String userId = (String) request.getSession().getAttribute("userId");
-        String schoolCode = (String) request.getSession().getAttribute("schoolCode");
+        // 入力値取得
+        String grade = request.getParameter("grade");
+        String className = request.getParameter("class");
+        String subject = request.getParameter("subject");
+        String scoreStr = request.getParameter("score");
 
-        // DAOで必要なデータを取得
-        ClassDao classDao = new ClassDao();
-        SubjectDao subjectDao = new SubjectDao();
+        int score = Integer.parseInt(scoreStr);
 
-        request.setAttribute("classList", classDao.getClassList(schoolCode));
-        request.setAttribute("subjectList", subjectDao.getSubjectList(schoolCode));
+        // バリデーションとかやる
+        if (score < 0 || score > 100) {
+            request.setAttribute("error", "0〜100の範囲で入力してください");
+            request.getRequestDispatcher("/test_regist.jsp").forward(request, response);
+            return;
+        }
 
-        return mapping.findForward("success");
+        // DAO使ってDB保存する処理
+        TestDao dao = new TestDao();
+        dao.insertTestData(grade, className, subject, score);
+
+        // 登録完了画面へ
+        response.sendRedirect("test_regist_done.jsp");
     }
-
-	@Override
-	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
 }

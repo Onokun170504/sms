@@ -40,8 +40,8 @@ public class Test implements java.io.Serializable{
 		this.classNum=classNum;
 	}
 	
-	public void setSubject(Subject subject) {
-		this.subject=subject;
+	public void setSubject(javax.security.auth.Subject subject2) {
+		this.subject=subject2;
 	}
 	
 	public void setSchool(School school) {
