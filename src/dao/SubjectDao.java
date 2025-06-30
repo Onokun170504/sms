@@ -248,4 +248,9 @@ public class SubjectDao extends Dao {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}
+
+	public int delete(String subjectCode, Object userId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return 0;
+	}
 }

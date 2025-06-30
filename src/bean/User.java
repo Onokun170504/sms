@@ -21,4 +21,9 @@ public class User {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}
+
+	public Object getUserId() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 }
