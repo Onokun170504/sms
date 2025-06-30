@@ -197,4 +197,11 @@ public class TestDao extends Dao {
 		}
 	}
 
+	public void insertTestData(String grade, String className, String subject, int score) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+
+
 }
