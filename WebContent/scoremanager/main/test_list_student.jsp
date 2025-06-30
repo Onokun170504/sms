@@ -1,7 +1,7 @@
 <%-- 学生一覧JSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:imp	ort url="/common/base.jsp" >
+<c:import url="/common/base.jsp" >
 <c:param name="title">得点管理システム</c:param>
 
 <c:param name="scripts"></c:param>
@@ -75,7 +75,7 @@
 <option value="0">--------</option>
 <c:forEach var="subject" items="${subjects}">
 <%-- 現在のsubject.cdと選択されていたf3が一致していた場合selectedを追記 --%>
-<option value="${subject.cd}" <c:if test="${subject.cd == f3 }">selected</c:if>>${subject.name}</option>
+<option value="${subject.name}" <c:if test="${subject.name == f3 }">selected</c:if>>${subject.name}</option>
 </c:forEach>
 </select>
 </div>
