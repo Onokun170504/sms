@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Subject;
 import bean.Teacher;
 import dao.ClassNumDao;
 import dao.SubjectDao;
@@ -70,7 +71,7 @@ public class TestListAction extends Action {
 		List<String> class_num_set = classNumDao.filter(teacher.getSchool());
 
 		// ログインユーザーの学校コードをもとに科目名を取得
-		List<SubjectDao> subjects = subjectDao.filter(teacher.getSchool());
+		List<Subject> subjects = subjectDao.filter(teacher.getSchool());
 
 
 		//⑥レスポンス値をセット

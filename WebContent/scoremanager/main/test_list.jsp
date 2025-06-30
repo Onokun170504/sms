@@ -64,9 +64,7 @@
 	</select>
 	</div>
 
-
 	<div class="col-4">
-
 
 	<%-- ⑤科目(label) --%>
 	<label class="form-label " for="f3" >科目</label>
@@ -76,7 +74,7 @@
 	<option value="0">--------</option>
 	<c:forEach var="subject" items="${subjects}">
 	<%-- 現在のsubject.cdと選択されていたf3が一致していた場合selectedを追記 --%>
-	<option value="${subject.cd}" <c:if test="${subject.cd == f3 }">selected</c:if>>${subject.name}</option>
+	<option value="${subject.name}" <c:if test="${subject.name == f3 }">selected</c:if>>${subject.name}</option>
 	</c:forEach>
 	</select>
 	</div>
@@ -118,6 +116,7 @@ placeholder="学生番号を入力してください" required></div>
 </div>
 </div>
 </form>
+
 </div>
 
 <%-----------------------------------------------------------------------------------------------%>
