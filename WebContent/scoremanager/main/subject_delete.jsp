@@ -17,7 +17,7 @@
       <form action="SubjectDeleteExecute.action" method="get">
      <!-- 科目コード -->
 <div class="mx-auto py-2">
-  <label for="subjectCode">「Javaプログラミング基礎(F02)」を削除してもよろしいですか</label><br>
+  <label for="subjectdelete">「Javaプログラミング基礎(F02)」を削除してもよろしいですか</label><br>
 </div>
 
 		<!-- 送信 -->
