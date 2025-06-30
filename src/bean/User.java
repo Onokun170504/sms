@@ -16,4 +16,9 @@ public class User {
 	public void setAuthenticated(boolean isAuthenticated) {
 		this.isAuthenticated = isAuthenticated;
 	}
+
+	public String getSchoolCode() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 }

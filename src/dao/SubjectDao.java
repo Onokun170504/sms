@@ -243,4 +243,9 @@ public class SubjectDao extends Dao {
         }
         return count > 0;
     }
+
+	public Subject getSubject(String subjectCode, String schoolCode) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 }
