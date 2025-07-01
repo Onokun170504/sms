@@ -41,7 +41,7 @@ public class TestListSubjectDao extends Dao {
         try {
             while (rSet.next()){
             	// 新しいTestListSubjectDaoオブジェクトを作成
-                TestListSubjectDao testListSubject = new TestListSubjectDao();
+                TestListSubject testListSubject = new TestListSubject();
              // 科目番号と点数を格納するためのマップを初期化
                 Map<Integer, Integer> points = new HashMap<>();
 
