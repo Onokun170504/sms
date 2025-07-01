@@ -7,10 +7,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Student;
+import bean.Teacher;
+import bean.TestListSubject;
 import dao.ClassNumDao;
 import dao.StudentDao;
+import dao.SubjectDao;
+import dao.TestListSubjectDao;
 import tool.Action;
 
 public class TestListSubjectExecuteAction extends Action {
@@ -18,6 +23,11 @@ public class TestListSubjectExecuteAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO 自動生成されたメソッド・スタブ
+
+		/* セッションの取得 */
+		HttpSession session = req.getSession();
+		Teacher teacher = (Teacher)session.getAttribute("user");
+
 
 		/* ローカル変数の宣言 */
 		String entYearStr = ""; // 入力された入学年度
@@ -32,19 +42,23 @@ public class TestListSubjectExecuteAction extends Action {
 		ClassNumDao classNumDao = new ClassNumDao(); // クラス番号Daoを初期化
 		Map<String, String> errors = new HashMap<>(); // エラーメッセージ
 
-
-
-
+String subjectCd = "";
+TestListSubjectDao tlsDao = new TestListSubjectDao();
+SubjectDao subjectDao = new SubjectDao();
 		/*
 		 *  リクエストパラメータの取得
 		 *  (JSPファイルから受け取る値やデータ)
 		 */
+		entYearStr = req.getParameter("f1");
+		classNum = req.getParameter("f2");
+		subjectCd = req.getParameter("f3");
+		entYear = Integer.parseInt(entYearStr);
 
-
+		/* エラー処理 */
 
 
 		/* DBからデータを取得する */
-
+		List<TestListSubject> tlsList = tlsDao.filter(entYear, classNum, subjectDao.get(subjectCd, teacher.getSchool()), teacher.getSchool());
 
 
 
