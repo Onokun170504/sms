@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.School;
+import bean.Subject;
 
 public class SubjectDao extends Dao {
 
@@ -242,4 +243,9 @@ public class SubjectDao extends Dao {
         }
         return count > 0;
     }
+
+	public List<Subject> filterBySchool(School school) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 }
