@@ -30,10 +30,10 @@ public class TestListSubjectDao extends Dao {
      * @throws Exception 処理中に発生した例外
      */
 
-    private List<TestListSubjectDao> postFilter(ResultSet rSet) throws Exception {
+    private List<TestListSubject> postFilter(ResultSet rSet) throws Exception {
 
         //結果を格納するリストを初期化
-        List<TestListSubjectDao> list = new ArrayList<>();
+        List<TestListSubject> list = new ArrayList<>();
 
         //同じ学生の複数の科目点数を集約するよう
         Map<String, TestListSubject> studentMap = new HashMap<>(); // ★
@@ -41,7 +41,7 @@ public class TestListSubjectDao extends Dao {
         try {
             while (rSet.next()){
             	// 新しいTestListSubjectDaoオブジェクトを作成
-                TestListSubjectDao testListSubject = new TestListSubjectDao();
+                TestListSubject testListSubject = new TestListSubject();
              // 科目番号と点数を格納するためのマップを初期化
                 Map<Integer, Integer> points = new HashMap<>();
 
@@ -111,9 +111,9 @@ public class TestListSubjectDao extends Dao {
      * @throws Exception データベースアクセス中に発生した例外
      */
 
-	public List<TestListSubjectDao> filter(int entYear, String classNum, Subject subject, School school) throws Exception {
+	public List<TestListSubject> filter(int entYear, String classNum, Subject subject, School school) throws Exception {
 		// 結果を格納するためのリストを初期化
-        List<TestListSubjectDao> list = new ArrayList<>();
+        List<TestListSubject> list = new ArrayList<>();
      // データベースコネクションを確立
         Connection connection = null;
         // プリペアードステートメントを初期化
